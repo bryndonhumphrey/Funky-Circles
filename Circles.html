@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circles</title>
-    <script type="text/javascript" src="./paper-full.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script>
-    <link rel="stylesheet" href="./circles.css">
+    <script type="text/javascript" src="./node_modules/paper/dist/paper-full.min.js"></script>
+    <script type="text/javascript" src="./node_modules/howler/dist/howler.min.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/circles.css">
 
     <!-- Define inlined PaperScript associate it with myCanvas -->
     <script type="text/paperscript" canvas="myCanvas">
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-      ctx.font = "4vw Arial";
-      ctx.fillStyle = "white";
-      ctx.textAlign = "center";
-      ctx.fillText("Press some keys on your keyboard to get funky!", canvas.width/2, canvas.height/2);  
+      var canvas = document.getElementById("myCanvas");  
       var keyData = {
             q: {
                 sound: new Howl({
@@ -177,7 +172,7 @@
         
 
         var circles = [];
-        
+
         function onKeyDown(event) {
             if(keyData[event.key]) {
                 var maxPoint = new Point(view.size.width, view.size.height);
@@ -204,6 +199,13 @@
             }
         }
 
+    </script>
+    <script type="text/paperscript" canvas="myCanvas">
+    var ctx = canvas.getContext("2d");
+      ctx.font = "4vw Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("Press some keys on your keyboard to get funky!", canvas.width/2, canvas.height/2);
     </script>
 </head>
 <body> 

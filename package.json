@@ -1,0 +1,16 @@
+{
+  "name": "funky-circles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "circles.html",
+  "dependencies": {
+    "howler": "^2.2.0",
+    "paper": "^0.12.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bryndon",
+  "license": "ISC"
+}
