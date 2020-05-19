@@ -14,8 +14,6 @@ app.get("*", function(req, res){
     res.render("circles");
 });
 
-
-var port = process.env.PORT || 3000;
-app.listen(port, function(){
+app.listen(5000, function(){
     console.log("Funky Circles server is running on port 3000");
 });
