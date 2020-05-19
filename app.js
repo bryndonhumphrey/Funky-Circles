@@ -14,7 +14,7 @@ app.get("*", function(req, res){
     res.render("circles");
 });
 
-var port = process.env.PORT || 80;
-app.listen(port, function(){
-    console.log("Funky Circles server is running");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
