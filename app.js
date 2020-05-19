@@ -7,11 +7,11 @@ app.use(express.static("./"))
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
-    res.render("circles");
+    res.render("Circles");
 });
 
 app.get("*", function(req, res){
-    res.render("circles");
+    res.render("Circles");
 });
 
 const PORT = process.env.PORT || 5000;
