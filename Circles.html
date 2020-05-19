@@ -11,6 +11,13 @@
     <!-- Define inlined PaperScript associate it with myCanvas -->
     <script type="text/paperscript" canvas="myCanvas">
       var canvas = document.getElementById("myCanvas");  
+      
+      var text = new PointText(new Point(canvas.width/2, canvas.height/2));
+      text.justification = 'center';
+      text.fillColor = 'white';
+      text.fontSize = '4vw';
+      text.content = 'Press any key on your keyboard to get Funky!';
+
       var keyData = {
             q: {
                 sound: new Howl({
@@ -174,14 +181,15 @@
         var circles = [];
 
         function onKeyDown(event) {
-            if(keyData[event.key]) {
-                var maxPoint = new Point(view.size.width, view.size.height);
+            if(keyData[event.key]) { 
+              var maxPoint = new Point(view.size.width, view.size.height);
                 var randomPoint = Point.random();
                 var point = maxPoint * randomPoint;
                 var newCircle = new Path.Circle(new Point(point), 500);
                 newCircle.fillColor = keyData[event.key].color;
                 keyData[event.key].sound.play();
                 circles.push(newCircle);
+                text.content = " "; 
             }
         }
 
@@ -199,13 +207,6 @@
             }
         }
 
-    </script>
-    <script type="text/paperscript" canvas="myCanvas">
-    var ctx = canvas.getContext("2d");
-      ctx.font = "4vw Arial";
-      ctx.fillStyle = "white";
-      ctx.textAlign = "center";
-      ctx.fillText("Press some keys on your keyboard to get funky!", canvas.width/2, canvas.height/2);
     </script>
 </head>
 <body> 
