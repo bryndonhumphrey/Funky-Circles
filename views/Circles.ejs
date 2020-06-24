@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Circles</title>
-    <script type="text/javascript" src="../node_modules/paper/dist/paper-full.min.js"></script>
-    <script type="text/javascript" src="../node_modules/howler/dist/howler.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/paper/dist/paper-full.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/howler/dist/howler.min.js"
+    ></script>
     <!--<script type="text/javascript" src="../models/circle.js"></script>-->
-    <link rel="stylesheet" href="./../public/stylesheets/circles.css">
+    <link rel="stylesheet" href="./../public/stylesheets/circles.css" />
 
     <!-- Define inlined PaperScript associate it with myCanvas -->
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        display: block;
+      }
+      .myCanvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
     <script type="text/paperscript" canvas="myCanvas">
-      var canvas = document.getElementById("myCanvas");  
-      
+
+      var canvas = document.getElementById("myCanvas");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      window.onresize = function(){ location.reload(); }
+
+      if(window.innerWidth < 425) {prompt("Some mobile users may be unable to use this app \n sorry :\(")}
+
       var text = new PointText(new Point(canvas.width/2, canvas.height/2));
       text.justification = 'center';
       text.fillColor = 'white';
@@ -177,12 +205,12 @@
                 color: '#2c3e50'
             }
         }
-        
+
 
         var circles = [];
 
         function onKeyDown(event) {
-            if(keyData[event.key]) { 
+            if(keyData[event.key]) {
               var maxPoint = new Point(view.size.width, view.size.height);
                 var randomPoint = Point.random();
                 var point = maxPoint * randomPoint;
@@ -190,7 +218,7 @@
                 newCircle.fillColor = keyData[event.key].color;
                 keyData[event.key].sound.play();
                 circles.push(newCircle);
-                text.content = " "; 
+                text.content = " ";
             }
         }
 
@@ -200,18 +228,16 @@
                 circles[i].scale(.9);
                 if(circles[i].area < 1){
                     circles[i].remove();
-                    
+
                     circles.splice(i, 1);
 
                     console.log(circles);
                 }
             }
         }
-
-
     </script>
-</head>
-<body> 
-  <canvas id="myCanvas" resize></canvas>
-</body>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+  </body>
 </html>
